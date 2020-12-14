@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensor Data</title>
+    <link href='https://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+</head>
+
+<body>
+   
+    <% if(arr!=null) { %>
+    <table>
+        <caption>A summary of the sensor data</caption>
+        <tr class=table-header>
+            <th>Status</th>
+            <th>Idrottsplats</th>
+            <th>Plan</th>
+            <th>Snödjup</th>
+            <th>Comment</th>
+            <th>Temperature</th>
+        </tr>
+        <% arr.forEach(function(element){ %>
+        <tr>
+          
+          <% if(element.Status === 'Opened') { %>
+            <td class = "opened"><%=element.Status%></td>
+            <%}else{%>
+              <td class = "closed"><%=element.Status%></td>
+            <%}%>
+            <td><%= element.Name %></td>
+            <td><%= element.Type%></td>
+            <td><%= element.SnowDepth+"mm" %></td>
+            <td><%= element.Comment%></td>
+            <td><%= element.Temperature%></td>
+
+        </tr>
+        <% }) %>
+    </table>
+    <br />
+    <br />
+
+    <% } %>
+
+    <div id="chart">
+    </div>
+
+    <!-- <script type="module" src="js/chart.js"></script> -->
+</body>
+
+</html>
